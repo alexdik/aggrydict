@@ -3,7 +3,7 @@ body {
 	color: #222222;
 	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	margin: 25px;
+	margin: 5px;
 }
 
 .template {
@@ -16,6 +16,7 @@ body {
 	max-width: 708px;
 	min-width: 708px;
 	padding: 10px;
+	padding-top: 5px;
 }
 
 /* .header {
@@ -127,4 +128,18 @@ body {
 	position: relative;
 	top: 5px;
 	font-size: 12px;
+}
+
+.menuBar {
+	background: #E5ECF9;
+	border: 1px solid;
+	border-color: #3366CC;
+	
+	position: relative;
+	padding: 10px;
+	
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    
+    margin-bottom: 10px;
 }

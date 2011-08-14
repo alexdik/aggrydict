@@ -41,3 +41,21 @@ h1 {
 	font-family: Arial Unicode MS, Arial, sans-serif;
 }
 
+.menuItem {
+	position: relative;
+	padding: 5px;
+	
+	-webkit-border-radius: 7px;
+    -moz-border-radius: 7px;  
+    margin-right: 10px;
+}
+
+.menuItemSelected {
+	font-weight: bold;
+	
+	background: -moz-linear-gradient(top, #fafbfe, #f1f1f1);
+}
+
+.gwt-Anchor:hover {
+	text-decoration: none;
+}
