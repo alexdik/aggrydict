@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/heartBeatServlet</url>
+    <description>Calling HeartBeatServlet to prevent application unloading</description>
+    <schedule>every 30 minutes from 00:03 to 23:59</schedule>
+  </cron>
+</cronentries>

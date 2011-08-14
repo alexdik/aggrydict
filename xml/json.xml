@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a>
+	<e class="array">
+		<e class="array">
+			<e type="string">де</e>
+			<e type="string">de</e>
+			<e type="string">de</e>
+			<e type="string" />
+		</e>
+	</e>
+	<e class="array">
+		<e class="array">
+			<e type="string">abbreviation</e>
+			<e class="array">
+				<e type="string">Делавэр</e>
+				<e type="string">Германия</e>
+			</e>
+		</e>
+	</e>
+	<e type="string">en</e>
+	<e class="object" null="true" />
+	<e class="array">
+		<e class="array">
+			<e type="string">де</e>
+			<e class="array">
+				<e type="number">5</e>
+			</e>
+			<e type="number">1</e>
+			<e type="number">0</e>
+			<e type="number">537</e>
+			<e type="number">0</e>
+			<e type="number">1</e>
+			<e type="number">0</e>
+		</e>
+	</e>
+	<e class="array">
+		<e class="array">
+			<e type="string">de</e>
+			<e type="number">4</e>
+			<e class="object" null="true" />
+			<e class="object" null="true" />
+			<e type="string" />
+		</e>
+		<e class="array">
+			<e type="string">de</e>
+			<e type="number">5</e>
+			<e class="array">
+				<e class="array">
+					<e type="string">де</e>
+					<e type="number">537</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+			</e>
+			<e class="array">
+				<e class="array">
+					<e type="number">0</e>
+					<e type="number">2</e>
+				</e>
+			</e>
+			<e type="string">de</e>
+		</e>
+	</e>
+	<e class="object" null="true" />
+	<e class="object" null="true" />
+	<e class="object" null="true" />
+	<e type="number">3</e>
+</a>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+	<!-- <filter>
+		<filter-name>Filter</filter-name>
+		<filter-class>translator.com.server.util.FilterServlet</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>Filter</filter-name>
+		<url-pattern>/translator/translatorService</url-pattern>
+	</filter-mapping> -->
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>translatorService</servlet-name>
+    <servlet-class>translator.com.server.TranslatorServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>translatorService</servlet-name>
+    <url-pattern>/translator/translatorService</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>heartBeatServlet</servlet-name>
+    <servlet-class>translator.com.server.HeartBeatServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>heartBeatServlet</servlet-name>
+    <url-pattern>/heartBeatServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Translator.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

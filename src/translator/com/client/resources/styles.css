@@ -1,0 +1,130 @@
+body {
+	/* background-color: #393939; */
+	color: #222222;
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 25px;
+}
+
+.template {
+	/* background: #eeeeee;
+	border: 1px solid;
+	border-color: black; */
+	
+	margin: auto;
+	position: relative;
+	max-width: 708px;
+	min-width: 708px;
+	padding: 10px;
+}
+
+/* .header {
+	background: #403524; 
+	border: 1px solid;
+	background-image: url("/resources/container-top-background.png");
+	border-color: black;
+	color: white;
+	
+	position: relative;
+	height: 68px;
+	max-width: 758px; */
+	/* margin: 10px;
+}
+
+.leftbar {
+	background: #aaeeae;
+	border: 1px solid;
+	border-color: black;
+	
+	position: absolute;
+	top: 80px;
+	margin: 10px;
+	width: 198px;
+} */
+
+.content {
+	background: #E5ECF9;
+	border: 1px solid;
+	border-color: #3366CC;
+	
+	position: relative;
+	padding: 10px;
+	
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.transControls {
+	margin-top: 5px;
+	position: relative;
+}
+
+.transBox {
+	position: relative;
+	width: 75%;
+}
+
+.transButton {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	vertical-align: top;
+	width: 21%; 
+}
+
+.dictControls {
+	position: relative;
+	margin-top: 10px;
+	height: 23px;
+}
+
+.dictLabel {
+	position: relative;
+	width: 10%;
+	top: 3px;
+	font-size: 13px;
+}
+
+.dictList {
+	position: absolute;
+	top: 0px;
+	left: 11%;
+	vertical-align: top;
+	width: 20%; 
+}
+
+.progressIndicator {
+	top: 3px;
+	margin: auto;
+	position: relative;
+	width: 32px;
+	height: 32px;
+}
+
+.transtext {
+	background: #f7f9fe;
+	border: 0px solid;
+	border-color: black;
+	
+	position: relative;
+	margin-top: 15px;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+	
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+.bottomLogo {
+	position: absolute;
+	/* width: 100%; */
+	margin-top: -16px;
+	right: 10px;
+}
+
+.bottomText {
+	position: relative;
+	top: 5px;
+	font-size: 12px;
+}

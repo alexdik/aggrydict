@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a>
+	<e class="array">
+		<e class="array">
+			<e type="string">совместимость</e>
+			<e type="string">interoperable</e>
+			<e type="string">sovmestimostʹ</e>
+			<e type="string" />
+		</e>
+	</e>
+	<e class="object" null="true" />
+	<e type="string">en</e>
+	<e class="object" null="true" />
+	<e class="array">
+		<e class="array">
+			<e type="string">совместимость</e>
+			<e class="array">
+				<e type="number">5</e>
+			</e>
+			<e type="number">1</e>
+			<e type="number">0</e>
+			<e type="number">362</e>
+			<e type="number">0</e>
+			<e type="number">1</e>
+			<e type="number">0</e>
+		</e>
+	</e>
+	<e class="array">
+		<e class="array">
+			<e type="string">interoperable</e>
+			<e type="number">5</e>
+			<e class="array">
+				<e class="array">
+					<e type="string">совместимость</e>
+					<e type="number">362</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+				<e class="array">
+					<e type="string">совместимых</e>
+					<e type="number">304</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+				<e class="array">
+					<e type="string">совместимости</e>
+					<e type="number">143</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+				<e class="array">
+					<e type="string">совместимыми</e>
+					<e type="number">127</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+				<e class="array">
+					<e type="string">совместимой</e>
+					<e type="number">61</e>
+					<e type="number">1</e>
+					<e type="number">0</e>
+				</e>
+			</e>
+			<e class="array">
+				<e class="array">
+					<e type="number">0</e>
+					<e type="number">13</e>
+				</e>
+			</e>
+			<e type="string">interoperable</e>
+		</e>
+	</e>
+	<e class="object" null="true" />
+	<e class="object" null="true" />
+	<e class="array">
+		<e class="array">
+			<e type="string">en</e>
+		</e>
+	</e>
+	<e type="number">4</e>
+</a>
