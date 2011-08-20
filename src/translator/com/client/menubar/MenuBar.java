@@ -15,6 +15,8 @@ public class MenuBar extends Composite {
 	private static MenuBarUiBinder uiBinder = GWT.create(MenuBarUiBinder.class);
 	private final Anchor translator = new Anchor("Translator");
 	private final Anchor favourite = new Anchor("Favourite");
+	private final static String ITEM_SELECTED_STYLE = "menuItemSelected";
+	private MenuSwitcher menuSwitcher;
 	@UiField HorizontalPanel hPanel;
 
 	private ClickHandler clickHandler = new ClickHandler(){
@@ -23,11 +25,15 @@ public class MenuBar extends Composite {
 			String anchText = anch.getText();
 			
 			if (anchText.equals("Translator")){
-				translator.addStyleName("menuItemSelected");
-				favourite.removeStyleName("menuItemSelected");
+				translator.addStyleName(ITEM_SELECTED_STYLE);
+				favourite.removeStyleName(ITEM_SELECTED_STYLE);
+				
+				menuSwitcher.activateMainView();
 			} else if (anchText.equals("Favourite")) {
-				favourite.addStyleName("menuItemSelected");
-				translator.removeStyleName("menuItemSelected");
+				favourite.addStyleName(ITEM_SELECTED_STYLE);
+				translator.removeStyleName(ITEM_SELECTED_STYLE);
+				
+				menuSwitcher.activateFavourite();
 			}
 		}
 	};
@@ -39,11 +45,9 @@ public class MenuBar extends Composite {
 		hPanel.add(translator);
 		hPanel.add(favourite);
 		
-		translator.addStyleName("menuItemSelected");
+		translator.addStyleName(ITEM_SELECTED_STYLE);
 		translator.addStyleName("menuItem");
 		favourite.addStyleName("menuItem");
-		
-		favourite.addStyleName("userInfo");
 		
 		super.onLoad();
 	}
@@ -51,7 +55,8 @@ public class MenuBar extends Composite {
 	interface MenuBarUiBinder extends UiBinder<Widget, MenuBar> {
 	}
 
-	public MenuBar() {
+	public MenuBar(MenuSwitcher menuSwitcher) {
+		this.menuSwitcher = menuSwitcher;
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 

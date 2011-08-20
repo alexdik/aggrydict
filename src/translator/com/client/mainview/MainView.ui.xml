@@ -4,7 +4,7 @@
 
 	<ui:style src="../resources/styles.css" />
 		
-	<g:HTMLPanel>
+	<g:HTMLPanel styleName='{style.content}'>
 		<div class="{style.transControls}">
 			<div class="{style.transBox}">
 				<g:TextBox ui:field="translateBox" textAlignment="ALIGN_LEFT" width="100%"/>

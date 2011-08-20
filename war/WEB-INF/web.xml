@@ -36,6 +36,16 @@
     <url-pattern>/heartBeatServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>facebookLoginServlet</servlet-name>
+    <servlet-class>translator.com.server.FacebookLoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>facebookLoginServlet</servlet-name>
+    <url-pattern>/loginfacebook</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Translator.html</welcome-file>

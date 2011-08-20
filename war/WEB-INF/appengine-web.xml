@@ -17,6 +17,11 @@
   <!-- Configure java.util.logging -->
   <system-properties>
     <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    
+    <property name="fb_app_id" value="148513031900090" />
+    <property name="fb_api_key" value="148513031900090" />
+    <property name="fb_secret" value="616a2eeabf896458414589cbeca6aa64 " />
+    <property name="fb_callback_url" value="http://aggrydict.appspot.com/loginfacebook" />
   </system-properties>
 
 </appengine-web-app>
