@@ -49,4 +49,8 @@ public class UserData {
 	public void setWords(Set<String> words) {
 		this.words = words;
 	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }
