@@ -9,6 +9,7 @@
 	<ui:style src="/resources/styles.css" />
 		
 	<g:HTMLPanel styleName='{style.template}' ui:field="htmlPanel">
+		<g:Label text="New Label" visible="false" ui:field="userName" horizontalAlignment="ALIGN_RIGHT"/>
 		<mb:MenuBar ui:field="menuBar"/>
 		<mnv:MainView ui:field="mainView"/>
 		<fv:Favourite ui:field="favourite" visible="false"/>

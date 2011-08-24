@@ -5,6 +5,7 @@ import translator.com.client.favourite.Favourite;
 import translator.com.client.mainview.MainView;
 import translator.com.client.menubar.MenuBar;
 import translator.com.client.menubar.MenuSwitcher;
+import translator.com.client.util.UserUtil;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -12,6 +13,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.Label;
 
 public class Container extends Composite {
 	private static ContainerUiBinder uiBinder = GWT.create(ContainerUiBinder.class);
@@ -19,6 +21,7 @@ public class Container extends Composite {
 	@UiField(provided=true) MenuBar menuBar;
 	@UiField(provided=true) Favourite favourite;
 	@UiField(provided=true) MainView mainView;
+	@UiField Label userName;
 //	@UiField CellList<String> cellList;
 //	@UiField Label header;
 
@@ -55,8 +58,14 @@ public class Container extends Composite {
 		
 		MenuSwitcher menuSwitcher = new MenuSwitcher(mainView, favourite);
 		menuBar = new MenuBar(menuSwitcher);
+		
 		initWidget(uiBinder.createAndBindUi(this));
 		
+		String userNameText = UserUtil.getUserName();
+		if (null != userNameText) {
+			userName.setVisible(true);
+			userName.setText(userNameText);
+		}
 //		final List<String> DAYS = Arrays.asList("Translator", "Dictionary");
 //		cellList.setRowCount(DAYS.size(), true);
 //		cellList.setRowData(0, DAYS);
