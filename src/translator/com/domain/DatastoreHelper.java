@@ -26,7 +26,7 @@ public class DatastoreHelper {
 		return userSecret;
 	}
 
-	public static synchronized UserInfo getUser(String userId) {
+	public static UserInfo getUser(String userId) {
 		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
 
 		try {
@@ -39,12 +39,24 @@ public class DatastoreHelper {
 		}
 	}
 
-	public static synchronized Set<String> getWords(String userSecret) {
+	public static Set<String> getWords(String userSecret, String filter) {
 		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
 
 		try {
 			UserDict userDict = pm.getObjectById(UserDict.class, userSecret);
-			return userDict.getWords();
+			Set<String> allWords = userDict.getWords();
+			
+			if (null == filter) {
+				return allWords;
+			} else {
+				Set<String> outputWords = new HashSet<String>();
+				for (String word : outputWords) {
+					if (word.contains(filter)) {
+						outputWords.add(word);
+					}
+				}
+				return outputWords;
+			}
 		} catch (javax.jdo.JDOObjectNotFoundException e) {
 			return null;
 		} finally {
@@ -52,12 +64,28 @@ public class DatastoreHelper {
 		}
 	}
 
-	public static synchronized boolean addWord(String userSecret, String word) {
+	public static boolean addWord(String userSecret, String word) {
 		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
 
 		try {
 			UserDict userDict = pm.getObjectById(UserDict.class, userSecret);
 			userDict.getWords().add(word);
+			return true;
+		} catch (javax.jdo.JDOObjectNotFoundException e) {
+			return false;
+		} finally {
+			pm.close();
+		}
+	}
+	
+	public static boolean removeWord(String userSecret, String word) {
+		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
+
+		try {
+			UserDict userDict = pm.getObjectById(UserDict.class, userSecret);
+			Set<String> words = userDict.getWords();
+			words.remove(words);
+			
 			return true;
 		} catch (javax.jdo.JDOObjectNotFoundException e) {
 			return false;
