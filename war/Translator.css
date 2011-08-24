@@ -53,7 +53,13 @@ h1 {
 .menuItemSelected {
 	font-weight: bold;
 	
-	background: -moz-linear-gradient(top, #fafbfe, #f1f1f1);
+	background: -moz-linear-gradient(top, #ffffff, #e0e3f0);
+}
+
+.menuLoginLogout {
+	position: absolute;
+	margin-top: 0px;
+	right: 10px;
 }
 
 .gwt-Anchor:hover {
