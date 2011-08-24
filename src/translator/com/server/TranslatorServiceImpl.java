@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Formatter;
+import java.util.Set;
 
 import translator.com.client.rpc.TranslatorService;
+import translator.com.domain.DatastoreHelper;
 import translator.com.server.transformation.Html2Xml;
 import translator.com.server.transformation.Json2Xml;
 import translator.com.server.transformation.XsltEngine;
@@ -59,5 +61,20 @@ public class TranslatorServiceImpl extends RemoteServiceServlet implements Trans
 			ex.printStackTrace();
 			throw ex;
 		}
+	}
+
+	@Override
+	public Boolean addWord(String userSecret, String word) throws Exception {
+		return DatastoreHelper.addWord(userSecret, word);
+	}
+
+	@Override
+	public Boolean removeWord(String userSecret, String word) throws Exception {
+		return DatastoreHelper.removeWord(userSecret, word);
+	}
+
+	@Override
+	public Set<String> getWords(String userSecret, String filter) throws Exception {
+		return DatastoreHelper.getWords(userSecret, filter);
 	}
 }
