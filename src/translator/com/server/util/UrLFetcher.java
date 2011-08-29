@@ -1,11 +1,9 @@
-package translator.com.server;
+package translator.com.server.util;
 
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import translator.com.server.util.Config;
-import translator.com.server.util.IOUtil;
 
 public class UrLFetcher {
 	public static String get(String urlString) throws IOException {

@@ -13,6 +13,9 @@ public class HeartBeatServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e1) {}
 		LOG.info("HeartBeatServlet.doGet");
 	}
 }

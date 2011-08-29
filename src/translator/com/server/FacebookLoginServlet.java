@@ -14,6 +14,7 @@ import translator.com.client.util.UserUtil;
 import translator.com.domain.DatastoreHelper;
 import translator.com.domain.UserInfo;
 import translator.com.server.util.Config;
+import translator.com.server.util.UrLFetcher;
 
 public class FacebookLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -4096110024780032128L;
@@ -28,6 +29,10 @@ public class FacebookLoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			Thread.sleep(700);
+		} catch (InterruptedException e1) {}
+		
 		String code = req.getParameter("code");
 		
 		if (code != null && !code.isEmpty()) {
