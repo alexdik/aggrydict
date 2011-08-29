@@ -108,7 +108,7 @@ body {
 	border-color: black;
 	
 	position: relative;
-	margin-top: 15px;
+	margin-top: 0px;
 	font-size: 12px;
 	padding: 10px;
 	width: 100%;
@@ -142,4 +142,35 @@ body {
     -moz-border-radius: 10px;
     
     margin-bottom: 10px;
+}
+
+.favouriteController {
+	position: relative;
+	margin-top: -3px;
+	height: 18px;
+	text-align: right;
+}
+
+.filterTextBox {
+	position: relative;
+	top: 0px;
+	vertical-align: top;
+	width: 55%; 
+	max-height: 18px;
+	min-height: 18px;
+}
+
+.favoriteArea {
+	background: #f7f9fe;
+	border: 0px solid;
+	border-color: black;
+	
+	position: relative;
+	margin-top: 12px;
+	font-size: 12px;
+	padding: 10px;
+	width: 100%;
+	
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
 }

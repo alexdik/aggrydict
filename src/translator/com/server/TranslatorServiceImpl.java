@@ -14,15 +14,17 @@ import translator.com.server.transformation.Html2Xml;
 import translator.com.server.transformation.Json2Xml;
 import translator.com.server.transformation.XsltEngine;
 import translator.com.server.util.Config;
+import translator.com.server.util.HexToString;
 import translator.com.server.util.IOUtil;
 import translator.com.shared.Engines;
+import translator.com.shared.domen.TranslationResult;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class TranslatorServiceImpl extends RemoteServiceServlet implements TranslatorService {
 	private static final long serialVersionUID = 3176680658668933784L;
 
-	public String translate(String word, String dictEngine) throws Exception {
+	public TranslationResult translate(final String word, final String dictEngine, final String userSecret) throws Exception {
 		URL url;
 		try {
 			String draftUrl = Config.getProperty(dictEngine + ".host");
@@ -54,27 +56,33 @@ public class TranslatorServiceImpl extends RemoteServiceServlet implements Trans
 			InputStream is = new ByteArrayInputStream(xml.getBytes(Config.ENCODING));
 
 			xsltEngine.transform(is, ousXslt, Config.getProperty(dictEngine + ".stylesheet"));
-
 			String newHtml = ousXslt.toString(Config.ENCODING);
-			return newHtml;
+			
+			// Checking if word is in favourite
+			boolean isInFavourite = null == userSecret ? false : DatastoreHelper.hasWord(userSecret, HexToString.toString(word));
+			TranslationResult res = new TranslationResult();
+			res.setText(newHtml);
+			res.setInFavourite(isInFavourite);
+			
+			return res;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw ex;
 		}
 	}
 
-	@Override
 	public Boolean addWord(String userSecret, String word) throws Exception {
+		Thread.sleep(1000);
 		return DatastoreHelper.addWord(userSecret, word);
 	}
 
-	@Override
 	public Boolean removeWord(String userSecret, String word) throws Exception {
+		Thread.sleep(1000);
 		return DatastoreHelper.removeWord(userSecret, word);
 	}
 
-	@Override
 	public Set<String> getWords(String userSecret, String filter) throws Exception {
+		Thread.sleep(1000);
 		return DatastoreHelper.getWords(userSecret, filter);
 	}
 }

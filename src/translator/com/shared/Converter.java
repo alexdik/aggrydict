@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 public class Converter {
 	private static final char[] HEX_CHARS = "0123456789ABCDEF".toCharArray();
 	private static final String ENCODING = "UTF-8";
+	private static final char SEP = '%';
 
 	public static String toHex(String text) {
 		byte[] buf;
@@ -22,7 +23,7 @@ public class Converter {
 			char c1 = HEX_CHARS[(i & 0xF0) >>> 4];
 			char c2 = HEX_CHARS[i & 0x0F];
 			
-			result[cnt] = '%';
+			result[cnt] = SEP;
 			result[cnt + 1] = c1;
 			result[cnt + 2] = c2;
 			

@@ -5,6 +5,19 @@
 		
 	
 	<g:HTMLPanel styleName='{style.content}'>
-		<g:VerticalPanel ui:field="verticalPanel"/>
+		<g:Label ui:field="loginRequest" text="Please login to use favourite list" visible="false"/>
+	
+		<g:HTMLPanel ui:field="favouriteContainer" visible="false">
+			<div class="{style.transControls}">
+				<g:TextBox ui:field="filterText" addStyleNames="{style.filterTextBox}" textAlignment="ALIGN_LEFT" maxLength="50"/>
+			</div>
+			
+			<g:HorizontalPanel visible="false" styleName="{style.favoriteArea}" ui:field="progressPanel" horizontalAlignment="ALIGN_CENTER">
+				<g:Image styleName="{style.progressIndicator}" ui:field="progressIndicator" />
+			</g:HorizontalPanel>
+			
+			
+			<g:VerticalPanel styleName="{style.favoriteArea}" ui:field="verticalPanel"/>
+		</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

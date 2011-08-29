@@ -2,9 +2,12 @@ package translator.com.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import javax.jdo.PersistenceManager;
+
+import translator.com.shared.DictConstants;
 
 public class DatastoreHelper {
 	public static String creatUser(String userId, String userName) {
@@ -47,10 +50,14 @@ public class DatastoreHelper {
 			Set<String> allWords = userDict.getWords();
 			
 			if (null == filter) {
-				return allWords;
+				Set<String> res = new TreeSet<String>();
+				for (String word : allWords) {
+					res.add(word);
+				}
+				return res;
 			} else {
-				Set<String> outputWords = new HashSet<String>();
-				for (String word : outputWords) {
+				Set<String> outputWords = new TreeSet<String>();
+				for (String word : allWords) {
 					if (word.contains(filter)) {
 						outputWords.add(word);
 					}
@@ -65,6 +72,10 @@ public class DatastoreHelper {
 	}
 
 	public static boolean addWord(String userSecret, String word) {
+		if (word.length() > DictConstants.MAX_WORD_LEN) {
+			word = word.substring(0, DictConstants.MAX_WORD_LEN);
+		}
+		
 		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
 
 		try {
@@ -84,9 +95,24 @@ public class DatastoreHelper {
 		try {
 			UserDict userDict = pm.getObjectById(UserDict.class, userSecret);
 			Set<String> words = userDict.getWords();
-			words.remove(words);
+			words.remove(word);
 			
 			return true;
+		} catch (javax.jdo.JDOObjectNotFoundException e) {
+			return false;
+		} finally {
+			pm.close();
+		}
+	}
+	
+	public static boolean hasWord(String userSecret, String word) {
+		PersistenceManager pm = DatastoreManager.get().getPersistenceManager();
+
+		try {
+			UserDict userDict = pm.getObjectById(UserDict.class, userSecret);
+			Set<String> words = userDict.getWords();
+
+			return words.contains(word);
 		} catch (javax.jdo.JDOObjectNotFoundException e) {
 			return false;
 		} finally {

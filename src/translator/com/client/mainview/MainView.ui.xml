@@ -7,7 +7,7 @@
 	<g:HTMLPanel styleName='{style.content}'>
 		<div class="{style.transControls}">
 			<div class="{style.transBox}">
-				<g:TextBox ui:field="translateBox" textAlignment="ALIGN_LEFT" width="100%"/>
+				<g:TextBox ui:field="translateBox" textAlignment="ALIGN_LEFT" width="100%" maxLength="50"/>
 			</div>
 			<div class="{style.transButton}">
 				<g:Button ui:field="trButton" text="Translate" width="100%" height="30px"></g:Button>
@@ -21,6 +21,12 @@
 			<div class="{style.dictList}">
 				<g:ListBox ui:field="engineList" visibleItemCount="1" />
 			</div>
+		</div>
+		
+		<div class="{style.favouriteController}">
+			<g:Image ui:field="addFavouriteController"/>
+			<g:Image ui:field="remFavouriteController"/>
+			<g:Image ui:field="spinFavouriteController"/>
 		</div>
 		
 		<g:HorizontalPanel styleName="{style.transtext}" ui:field="progressPanel" horizontalAlignment="ALIGN_CENTER">

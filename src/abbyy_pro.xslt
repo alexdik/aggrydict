@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns0="http://www.w3.org/1999/xhtml">
+	<xsl:output method="xml" omit-xml-declaration="yes"/>
 
 	<xsl:template match="/">
 		<xsl:choose>
@@ -9,13 +10,13 @@
 				<xsl:apply-templates select="//ns0:div[@class='suggests-translate' and @id='suggests']/ns0:ul[@class='suggests-list' and @id='ul']"/>
 			</xsl:when>
 			<xsl:otherwise>
-				<html>
-				<head>
-				</head>
-				<body>
 				<xsl:choose>
 					<!-- <xsl:when test="ns0:html/ns0:body/ns0:div[@class='page']/ns0:div[@class='bd']/ns0:div[@class='b-general-content']/ns0:div[@class='b-search-results']/ns0:div[@class='data']/ns0:div[@class='b-left-panel']/ns0:div"> -->
 					<xsl:when test="//ns0:div[@class='js-article-html article-html'] or //ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']">
+						<html>
+						<head>
+						</head>
+						<body>
 						<xsl:if test="//ns0:div[@class='js-article-html article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src">
 							<xsl:element name="img">
 								<xsl:attribute name="src">http://lingvopro.abbyyonline.com<xsl:value-of select="//ns0:div[@class='js-article-html article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src"/></xsl:attribute>
@@ -27,13 +28,11 @@
 						<xsl:if test="//ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']">
 							<xsl:apply-templates select="//ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']"/>
 						</xsl:if>
+						</body>
+						</html>
 					</xsl:when>
-					<xsl:otherwise>
-						No word found
-					</xsl:otherwise>
+					<xsl:otherwise>No word found</xsl:otherwise>
 				</xsl:choose>
-				</body>
-				</html>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

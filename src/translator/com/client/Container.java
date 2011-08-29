@@ -5,6 +5,7 @@ import translator.com.client.favourite.Favourite;
 import translator.com.client.mainview.MainView;
 import translator.com.client.menubar.MenuBar;
 import translator.com.client.menubar.MenuSwitcher;
+import translator.com.client.util.TranslateAction;
 import translator.com.client.util.UserUtil;
 
 import com.google.gwt.core.client.GWT;
@@ -53,11 +54,23 @@ public class Container extends Composite {
 	public Container() {
 		imageLogo = new Image("http://code.google.com/appengine/images/appengine-noborder-120x30.gif");
 		
-		favourite = new Favourite();
 		mainView = new MainView();
+		favourite = new Favourite();
 		
 		MenuSwitcher menuSwitcher = new MenuSwitcher(mainView, favourite);
+		
 		menuBar = new MenuBar(menuSwitcher);
+		
+		favourite.setTranslateAction(new TranslateAction() {
+			public void translateText(String word) {
+				mainView.setText(word);
+				menuBar.activateTranslator();
+				mainView.onClick(null);
+			}
+			public void setWordNotExists(String word) {
+				mainView.setWordNotExists(word);
+			}
+		});
 		
 		initWidget(uiBinder.createAndBindUi(this));
 		

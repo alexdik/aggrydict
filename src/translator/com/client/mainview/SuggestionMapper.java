@@ -8,7 +8,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class SuggestionMapper {
 	private static final String SUGGEST_PATTERN = "SuggestCard";
-	private static final int SUGGEST_PATTERN_LEN = 50;
+	private static final int SUGGEST_PATTERN_LEN = SUGGEST_PATTERN.length();
 	private static final String FIELD_SIZE = "190";
 	private static final int ELEMS_PER_ROW = 3;
 
@@ -41,6 +41,9 @@ public class SuggestionMapper {
 	}
 
 	public static boolean isSuggestData(String data) {
+		if (data.length() < SUGGEST_PATTERN_LEN) {
+			return false;
+		}
 		return data.substring(0, SUGGEST_PATTERN_LEN).contains(SUGGEST_PATTERN);
 	}
 }

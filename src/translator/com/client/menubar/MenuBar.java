@@ -2,6 +2,7 @@ package translator.com.client.menubar;
 
 import translator.com.client.util.UserUtil;
 
+import translator.com.client.resources.Resources;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -11,16 +12,19 @@ import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
+import translator.com.shared.DictConstants;
 
 public class MenuBar extends Composite {
 
 	private static MenuBarUiBinder uiBinder = GWT.create(MenuBarUiBinder.class);
 	private final Anchor translator = new Anchor("Translator");
 	private final Anchor favourite = new Anchor("Favourite");
-	private final Anchor login = new Anchor("Login", GWT.getHostPageBaseURL()+"loginfacebook");
+	private final Anchor login = new Anchor("", GWT.getHostPageBaseURL() + DictConstants.FACEBOOK_AUTH_SERVLET);
 	private final Anchor logout = new Anchor("Logout", GWT.getHostPageBaseURL());
 	private final static String ITEM_SELECTED_STYLE = "menuItemSelected";
+	private static final Resources RESOURCES = GWT.create(Resources.class);
 	private MenuSwitcher menuSwitcher;
 	@UiField HorizontalPanel hPanel;
 
@@ -30,15 +34,9 @@ public class MenuBar extends Composite {
 			String anchText = anch.getText();
 			
 			if (anchText.equals("Translator")){
-				translator.addStyleName(ITEM_SELECTED_STYLE);
-				favourite.removeStyleName(ITEM_SELECTED_STYLE);
-				
-				menuSwitcher.activateMainView();
+				activateTranslator();
 			} else if (anchText.equals("Favourite")) {
-				favourite.addStyleName(ITEM_SELECTED_STYLE);
-				translator.removeStyleName(ITEM_SELECTED_STYLE);
-				
-				menuSwitcher.activateFavourite();
+				activateFavourite();
 			}
 		}
 	};
@@ -58,11 +56,13 @@ public class MenuBar extends Composite {
 		
 		if (UserUtil.isAuthorized()) {
 			hPanel.add(logout);
-			logout.addStyleName("menuLoginLogout");
+			logout.addStyleName("menuLogout");
 			logout.addClickHandler(logoutHandler);
 		} else {
+			Image loginImg = new Image(RESOURCES.facebook());
+			loginImg.setStyleName("menuLogin");
+			login.getElement().appendChild(loginImg.getElement());
 			hPanel.add(login);
-			login.addStyleName("menuLoginLogout");
 		}
 		
 		translator.addStyleName(ITEM_SELECTED_STYLE);
@@ -79,6 +79,20 @@ public class MenuBar extends Composite {
 		this.menuSwitcher = menuSwitcher;
 	    
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+	
+	public void activateTranslator() {
+		translator.addStyleName(ITEM_SELECTED_STYLE);
+		favourite.removeStyleName(ITEM_SELECTED_STYLE);
+		
+		menuSwitcher.activateMainView();
+	}
+	
+	public void activateFavourite() {
+		favourite.addStyleName(ITEM_SELECTED_STYLE);
+		translator.removeStyleName(ITEM_SELECTED_STYLE);
+		
+		menuSwitcher.activateFavourite();
 	}
 
 }
