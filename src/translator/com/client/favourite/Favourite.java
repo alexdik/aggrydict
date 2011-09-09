@@ -8,6 +8,7 @@ import translator.com.client.rpc.TranslatorServiceAsync;
 import translator.com.client.util.TimeoutRequestBuilder;
 import translator.com.client.util.TranslateAction;
 import translator.com.client.util.UserUtil;
+import translator.com.shared.UIText;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.BlurEvent;
@@ -174,7 +175,7 @@ public class Favourite extends Composite {
 
 		if (words != null) {
 			if (words.size() == 0) {
-				Label label = new Label("No words found");
+				Label label = new Label(null == getFilter() ? UIText.FAV_EMPTY : UIText.FILTER_EMPTY);
 				label.setHeight("25px");
 				verticalPanel.add(label);
 			}
@@ -198,6 +199,7 @@ public class Favourite extends Composite {
 				remFavouriteController.setAltText(word);
 				remFavouriteController.addClickHandler(removeHandler);
 				remFavouriteController.setStyleName("favouriteLineRemoveImg");
+				remFavouriteController.setTitle("Remove word");
 				
 				hp.add(remFavouriteController);
 				hp.add(anch);

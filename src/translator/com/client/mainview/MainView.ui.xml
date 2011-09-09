@@ -24,8 +24,8 @@
 		</div>
 		
 		<div class="{style.favouriteController}">
-			<g:Image ui:field="addFavouriteController"/>
-			<g:Image ui:field="remFavouriteController"/>
+			<g:Image title="Add word" styleName='{style.cursorPointer}' ui:field="addFavouriteController"/>
+			<g:Image title="Remove word" styleName='{style.cursorPointer}' ui:field="remFavouriteController"/>
 			<g:Image ui:field="spinFavouriteController"/>
 		</div>
 		

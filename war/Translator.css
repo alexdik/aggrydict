@@ -78,9 +78,14 @@ h1 {
 	outline: none;
 }
 
+.gwt-Anchor:focus {
+	outline: none;
+}
+
 .favouriteLineRemoveImg {
 	margin-top: 2px;
 	margin-right: 2px;
+	cursor: pointer;
 }
 
 .favouriteLine {
