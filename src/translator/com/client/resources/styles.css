@@ -178,3 +178,16 @@ body {
 .cursorPointer {
 	cursor: pointer;
 }
+
+.groupCheckBox {
+	position: absolute;
+	margin: 8px;
+	margin-left: 18px;
+}
+
+.groupCheckBoxLabel {
+	position: absolute;
+	top: 4px;
+	left: 423px;
+	font-size: 14px;
+}

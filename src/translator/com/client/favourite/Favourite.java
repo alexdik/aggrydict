@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.SimpleCheckBox;
 
 public class Favourite extends Composite {
 	private static final String FIELD_SIZE = "170";
@@ -47,6 +48,7 @@ public class Favourite extends Composite {
 	@UiField(provided=true) TextBox filterText;
 	@UiField HTMLPanel favouriteContainer;
 	@UiField Label loginRequest;
+	@UiField SimpleCheckBox groupByWords;
 	private TranslatorServiceAsync translatorService = GWT.create(TranslatorService.class);
 	private TranslateAction translateAction;
 	private String oldFilterValue;
@@ -168,6 +170,12 @@ public class Favourite extends Composite {
 		} else {
 			loginRequest.setVisible(true);
 		}
+		
+		groupByWords.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				renderFavourite(true);
+			}
+		});
 	}
 	
 	public void renderRecords(Set<String> words) {
@@ -183,9 +191,25 @@ public class Favourite extends Composite {
 			HorizontalPanel hp = null;
 	
 			int cnt = 1;
+			char curLetter = '0';
 			for (String word : words) {
 				boolean needNewPanel = cnt % ELEMS_PER_ROW == 1;
 	
+				char newLetter = word.charAt(0);
+				if (groupByWords.getValue() && curLetter != newLetter) {
+					curLetter = newLetter;
+					
+					hp = new HorizontalPanel();
+					Label cap = new Label(String.valueOf(curLetter).toUpperCase());
+					hp.add(cap);
+					cap.setStyleName("cap");
+					
+					verticalPanel.add(hp);
+					
+					needNewPanel = true;
+					cnt = 1;
+				}
+				
 				if (needNewPanel) {
 					hp = new HorizontalPanel();
 					verticalPanel.add(hp);
