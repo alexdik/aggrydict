@@ -72,17 +72,14 @@ public class TranslatorServiceImpl extends RemoteServiceServlet implements Trans
 	}
 
 	public Boolean addWord(String userSecret, String word) throws Exception {
-		Thread.sleep(300);
 		return DatastoreHelper.addWord(userSecret, word);
 	}
 
 	public Boolean removeWord(String userSecret, String word) throws Exception {
-		Thread.sleep(300);
 		return DatastoreHelper.removeWord(userSecret, word);
 	}
 
 	public Set<String> getWords(String userSecret, String filter) throws Exception {
-		Thread.sleep(300);
 		return DatastoreHelper.getWords(userSecret, filter);
 	}
 }
