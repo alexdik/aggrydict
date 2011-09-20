@@ -17,6 +17,7 @@ import translator.com.server.util.Config;
 import translator.com.server.util.HexToString;
 import translator.com.server.util.IOUtil;
 import translator.com.shared.Engines;
+import translator.com.shared.LangDetector;
 import translator.com.shared.domen.TranslationResult;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -27,18 +28,23 @@ public class TranslatorServiceImpl extends RemoteServiceServlet implements Trans
 	public TranslationResult translate(final String word, final String dictEngine, final String userSecret) throws Exception {
 		URL url;
 		try {
+			// Check if the passed word language is supported
+			String wordUnescaped = HexToString.toString(word);
+			String[] langs = LangDetector.getLang(wordUnescaped);
+			if (null == langs) {
+				TranslationResult res = new TranslationResult();
+				res.setText("No word found");
+				return res;
+			}
+			
 			String draftUrl = Config.getProperty(dictEngine + ".host");
-			draftUrl = new Formatter().format(draftUrl, word).toString();
-			url = new URL(draftUrl); //"http://localhost:8080/web/proxy"
+			draftUrl = new Formatter().format(draftUrl, word, langs[0], langs[1]).toString();
+			url = new URL(draftUrl);
 
 			URLConnection conn = url.openConnection();
 			conn.setRequestProperty("User-Agent", Config.USER_AGENT);
 			conn.setDoOutput(true);
 			conn.connect();
-
-//			OutputStream ousCon = conn.getOutputStream();
-//			ousCon.write(draftUrl.getBytes(Config.ENCODING));
-//			ousCon.flush();
 
 			// Transforming to XML
 			byte[] bos = IOUtil.readStream(conn.getInputStream());
@@ -55,11 +61,12 @@ public class TranslatorServiceImpl extends RemoteServiceServlet implements Trans
 			ByteArrayOutputStream ousXslt = new ByteArrayOutputStream();
 			InputStream is = new ByteArrayInputStream(xml.getBytes(Config.ENCODING));
 
+			// Generating presentation
 			xsltEngine.transform(is, ousXslt, Config.getProperty(dictEngine + ".stylesheet"));
 			String newHtml = ousXslt.toString(Config.ENCODING);
-			
+				
 			// Checking if word is in favourite
-			boolean isInFavourite = null == userSecret ? false : DatastoreHelper.hasWord(userSecret, HexToString.toString(word));
+			boolean isInFavourite = null == userSecret ? false : DatastoreHelper.hasWord(userSecret, wordUnescaped);
 			TranslationResult res = new TranslationResult();
 			res.setText(newHtml);
 			res.setInFavourite(isInFavourite);

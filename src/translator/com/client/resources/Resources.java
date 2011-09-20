@@ -11,4 +11,6 @@ public interface Resources extends ClientBundle {
 	ImageResource smallprogress();
 	ImageResource smalldelete();
 	ImageResource facebook();
+	ImageResource group();
+	ImageResource ungroup();
 }

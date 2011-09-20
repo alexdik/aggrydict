@@ -10,14 +10,16 @@
 		<g:HTMLPanel ui:field="favouriteContainer" visible="false">
 			<div class="{style.transControls}">
 				<g:TextBox ui:field="filterText" addStyleNames="{style.filterTextBox}" textAlignment="ALIGN_LEFT" maxLength="50"/>
-				<g:SimpleCheckBox addStyleNames="{style.groupCheckBox}" ui:field="groupByWords"/>
-				<g:Label addStyleNames="{style.groupCheckBoxLabel}" text="First letter grouping"/> 
+			</div>
+			
+			<div class="{style.groupingController}">
+				<g:Image title="Group by letters" styleName='{style.cursorPointer}' ui:field="groupImage"/>
+				<g:Image title="Ungroup" styleName='{style.cursorPointer}' ui:field="ungroupImage"/>
 			</div>
 			
 			<g:HorizontalPanel visible="false" styleName="{style.favoriteArea}" ui:field="progressPanel" horizontalAlignment="ALIGN_CENTER">
 				<g:Image styleName="{style.progressIndicator}" ui:field="progressIndicator" />
 			</g:HorizontalPanel>
-			
 			
 			<g:VerticalPanel styleName="{style.favoriteArea}" ui:field="verticalPanel"/>
 		</g:HTMLPanel>

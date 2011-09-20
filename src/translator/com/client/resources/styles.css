@@ -166,7 +166,7 @@ body {
 	border-color: black;
 	
 	position: relative;
-	margin-top: 12px;
+	margin-top: 0px;
 	font-size: 12px;
 	padding: 10px;
 	width: 100%;
@@ -179,15 +179,9 @@ body {
 	cursor: pointer;
 }
 
-.groupCheckBox {
-	position: absolute;
-	margin: 8px;
-	margin-left: 18px;
-}
-
-.groupCheckBoxLabel {
-	position: absolute;
-	top: 5px;
-	left: 423px;
-	font-size: 13px;
+.groupingController {
+	position: relative;
+	margin-top: -6px;
+	height: 18px;
+	text-align: right;
 }

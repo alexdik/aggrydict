@@ -33,7 +33,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.SimpleCheckBox;
 
 public class Favourite extends Composite {
 	private static final String FIELD_SIZE = "170";
@@ -44,14 +43,16 @@ public class Favourite extends Composite {
 	private static FavouriteUiBinder uiBinder = GWT.create(FavouriteUiBinder.class);
 	@UiField VerticalPanel verticalPanel;
 	@UiField(provided=true) Image progressIndicator;
+	@UiField(provided=true) Image groupImage;
+	@UiField(provided=true) Image ungroupImage;
 	@UiField HorizontalPanel progressPanel;
 	@UiField(provided=true) TextBox filterText;
 	@UiField HTMLPanel favouriteContainer;
 	@UiField Label loginRequest;
-	@UiField SimpleCheckBox groupByWords;
 	private TranslatorServiceAsync translatorService = GWT.create(TranslatorService.class);
 	private TranslateAction translateAction;
 	private String oldFilterValue;
+	private boolean grouped = false;
 
 	interface FavouriteUiBinder extends UiBinder<Widget, Favourite> {
 	}
@@ -163,6 +164,21 @@ public class Favourite extends Composite {
 		filterText.addFocusHandler(focusFilterHandler);
 		filterText.addBlurHandler(blurFilterHandler);
 		
+		groupImage = new Image(RESOURCES.group());
+		ungroupImage = new Image(RESOURCES.ungroup());
+		ClickHandler clickHandler = new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				grouped = !grouped;
+				ungroupImage.setVisible(grouped);
+				groupImage.setVisible(!grouped);
+
+				renderFavourite(true);
+			}
+		};
+		groupImage.addClickHandler(clickHandler);
+		ungroupImage.addClickHandler(clickHandler);
+		ungroupImage.setVisible(grouped);
+		
 		initWidget(uiBinder.createAndBindUi(this));
 		
 		if (UserUtil.isAuthorized()) {
@@ -170,12 +186,6 @@ public class Favourite extends Composite {
 		} else {
 			loginRequest.setVisible(true);
 		}
-		
-		groupByWords.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent event) {
-				renderFavourite(true);
-			}
-		});
 	}
 	
 	public void renderRecords(Set<String> words) {
@@ -196,7 +206,7 @@ public class Favourite extends Composite {
 				boolean needNewPanel = cnt % ELEMS_PER_ROW == 1;
 	
 				char newLetter = word.charAt(0);
-				if (groupByWords.getValue() && curLetter != newLetter) {
+				if (grouped && curLetter != newLetter) {
 					curLetter = newLetter;
 					
 					hp = new HorizontalPanel();
