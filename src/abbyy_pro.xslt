@@ -12,21 +12,21 @@
 			<xsl:otherwise>
 				<xsl:choose>
 					<!-- <xsl:when test="ns0:html/ns0:body/ns0:div[@class='page']/ns0:div[@class='bd']/ns0:div[@class='b-general-content']/ns0:div[@class='b-search-results']/ns0:div[@class='data']/ns0:div[@class='b-left-panel']/ns0:div"> -->
-					<xsl:when test="//ns0:div[@class='js-article-html article-html'] or //ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']">
+					<xsl:when test="//ns0:div[@class='js-article-html'] or //ns0:div[@class='b-search-results']/ns0:div[@class='ao-u first']">
 						<html>
 						<head>
 						</head>
 						<body>
-						<xsl:if test="//ns0:div[@class='js-article-html article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src">
+						<xsl:if test="//ns0:div[@class='js-article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src">
 							<xsl:element name="img">
-								<xsl:attribute name="src">http://lingvopro.abbyyonline.com<xsl:value-of select="//ns0:div[@class='js-article-html article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src"/></xsl:attribute>
+								<xsl:attribute name="src">http://lingvopro.abbyyonline.com<xsl:value-of select="//ns0:div[@class='js-article-html']/ns0:p[@class='P']/ns0:img[@class='transcription']/@src"/></xsl:attribute>
 							</xsl:element>
 						</xsl:if>
-						<xsl:if test="//ns0:div[@class='js-article-html article-html']">
-							<xsl:apply-templates select="//ns0:div[@class='js-article-html article-html']"/>
+						<xsl:if test="//ns0:div[@class='js-article-html']">
+							<xsl:apply-templates select="//ns0:div[@class='js-article-html']"/>
 						</xsl:if>
-						<xsl:if test="//ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']">
-							<xsl:apply-templates select="//ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']"/>
+						<xsl:if test="//ns0:div[@class='b-search-results']/ns0:div[@class='ao-u first']">
+							<xsl:apply-templates select="//ns0:div[@class='b-search-results']/ns0:div[@class='ao-u first']"/>
 						</xsl:if>
 						</body>
 						</html>
@@ -38,7 +38,7 @@
 	</xsl:template>
 
 	<!-- ABBYY Lingvo (En-Ru) --> 
-	<xsl:template match="ns0:div[@class='js-article-html article-html']">
+	<xsl:template match="ns0:div[@class='js-article-html']">
 		<xsl:if test="./ns0:p[@class='P1']/ns0:a or ./ns0:p[@class='P1']/ns0:span[@class='comment']">
 			<h4>
 				<xsl:value-of select="./ns0:span[@class='name-dictionaries']/ns0:a[@shape='rect']"/>
@@ -60,7 +60,7 @@
 	</xsl:template>
 	
 	<!-- ABBYY Lingvo (Ru-En) -->
-	<xsl:template match="ns0:div[@class='b-left-panel']/ns0:div[@class='ao-u first']">
+	<xsl:template match="ns0:div[@class='b-search-results']/ns0:div[@class='ao-u first']">
 		<h4>
 			<xsl:value-of select=".//ns0:span[@class='tab']"/>
 		</h4>
