@@ -58,7 +58,7 @@ public class DatastoreHelper {
 			} else {
 				Set<String> outputWords = new TreeSet<String>();
 				for (String word : allWords) {
-					if (word.contains(filter)) {
+					if (word.matches("^" + filter + ".*")) {
 						outputWords.add(word);
 					}
 				}
