@@ -7,7 +7,7 @@ import translator.com.client.rpc.TranslatorService;
 import translator.com.client.rpc.TranslatorServiceAsync;
 import translator.com.client.util.TimeoutRequestBuilder;
 import translator.com.client.util.UserUtil;
-import translator.com.shared.Converter;
+import translator.com.shared.StringToHex;
 import translator.com.shared.Engines;
 import translator.com.shared.domen.TranslationResult;
 
@@ -221,12 +221,12 @@ public class MainView extends Composite implements HasText {
 		if (currentTime.getTime() < lastAccesTime.getTime() + 1000) {
 			Timer timer = new Timer() {
 				public void run() {
-					translatorService.translate(Converter.toHex(translateBox.getText()), engineList.getItemText(engineList.getSelectedIndex()), userSecret, translateCallback);
+					translatorService.translate(StringToHex.toHex(translateBox.getText()), engineList.getItemText(engineList.getSelectedIndex()), userSecret, translateCallback);
 				}
 			};
 			timer.schedule(1500);
 		} else {
-			translatorService.translate(Converter.toHex(translateBox.getText()), engineList.getItemText(engineList.getSelectedIndex()), userSecret, translateCallback);
+			translatorService.translate(StringToHex.toHex(translateBox.getText()), engineList.getItemText(engineList.getSelectedIndex()), userSecret, translateCallback);
 		}
 		
 		lastAccesTime = currentTime;

@@ -14,7 +14,7 @@ import translator.com.client.util.UserUtil;
 import translator.com.domain.DatastoreHelper;
 import translator.com.domain.UserInfo;
 import translator.com.server.util.Config;
-import translator.com.server.util.UrLFetcher;
+import translator.com.server.util.UrlFetcher;
 
 public class FacebookLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -4096110024780032128L;
@@ -41,11 +41,11 @@ public class FacebookLoginServlet extends HttpServlet {
 					+ "&client_secret=" + clientSecret + "&code=" + code;
 			
 			try {
-				String tokenRsp = UrLFetcher.get(getTokenURL);
+				String tokenRsp = UrlFetcher.get(getTokenURL);
 				
 				String token = URLEncoder.encode(formatUrl(tokenRsp), Config.ENCODING);
 				String url = "https://graph.facebook.com/me?access_token=" + token;
-				String userData = UrLFetcher.get(url);
+				String userData = UrlFetcher.get(url);
 				
 				JSONObject jsonObj = JSONObject.fromObject( userData );
 				if (jsonObj.containsKey("name") && jsonObj.containsKey("id")) {

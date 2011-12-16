@@ -46,6 +46,21 @@
     <url-pattern>/loginfacebook</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>restdisp</servlet-name>
+    <servlet-class>restdisp.DispatcherServlet</servlet-class>
+    <init-param>
+		<param-name>router.conf</param-name>
+		<param-value>router.conf</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>restdisp</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Translator.html</welcome-file>

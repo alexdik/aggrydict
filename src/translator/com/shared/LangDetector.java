@@ -27,6 +27,18 @@ public class LangDetector {
 		}
 		return null;
 	}
+	
+	public static String[] getLangByFirstLetter(String word) {
+		char[] ltrs = word.toCharArray();
+		for (char chr : ltrs) {
+			if (ENG_LOW <= chr && chr <= ENG_HIGH) {
+				return new String[]{EN, RU};
+			} else if (RUS_LOW <= chr && chr <= RUS_HIGH) {
+				return new String[]{RU, EN};
+			}
+		}
+		return null;
+	}
 
 	private static boolean checkAllSame(char[] ltrs, int low, int high) {
 		for (char c : ltrs) {
