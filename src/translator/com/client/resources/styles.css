@@ -118,16 +118,15 @@ body {
 }
 
 .bottomLogo {
-	position: absolute;
-	/* width: 100%; */
-	margin-top: -16px;
-	right: 10px;
+	float: right;
+	margin-top: 3px;
 }
 
 .bottomText {
 	position: relative;
 	top: 5px;
 	font-size: 12px;
+	margin-right: 150px;
 }
 
 .menuBar {

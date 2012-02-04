@@ -12,13 +12,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.Label;
 
 public class Container extends Composite {
 	private static ContainerUiBinder uiBinder = GWT.create(ContainerUiBinder.class);
-	@UiField(provided=true) Image imageLogo;
 	@UiField(provided=true) MenuBar menuBar;
 	@UiField(provided=true) Favourite favourite;
 	@UiField(provided=true) MainView mainView;
@@ -52,8 +50,6 @@ public class Container extends Composite {
 	}*/
 
 	public Container() {
-		imageLogo = new Image("http://code.google.com/appengine/images/appengine-noborder-120x30.gif");
-		
 		mainView = new MainView();
 		favourite = new Favourite();
 		

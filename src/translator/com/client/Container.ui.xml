@@ -14,9 +14,13 @@
 		<mnv:MainView ui:field="mainView"/>
 		<fv:Favourite ui:field="favourite" visible="false"/>
 		
-		<g:HTML addStyleNames="{style.bottomText}">Based on <a href="http://lingvopro.abbyyonline.com/" target="_blank">Abbyy</a> and <a href="http://translate.google.com/" target="_blank">Google</a> translation services.</g:HTML>
-		<g:HorizontalPanel styleName="{style.bottomLogo}" horizontalAlignment="ALIGN_RIGHT">
-			<g:Image ui:field="imageLogo" />
-		</g:HorizontalPanel>
+		<div>
+			<div class="{style.bottomLogo}">
+				<img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif"/>
+			</div>
+			<div class="{style.bottomText}">
+				Based on <a href="http://lingvopro.abbyyonline.com/" target="_blank">Abbyy</a> and <a href="http://translate.google.com/" target="_blank">Google</a> translation services.
+			</div>
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 
