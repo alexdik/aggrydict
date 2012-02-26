@@ -13,8 +13,8 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/saxon9he.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/tagsoup-1.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/xom-1.2.6.jar"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/restdisp.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (2)"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (2)"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
