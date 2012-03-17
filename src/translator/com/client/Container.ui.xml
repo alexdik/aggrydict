@@ -4,6 +4,7 @@
 	xmlns:mnv='urn:import:translator.com.client.mainview' 
 	xmlns:mb='urn:import:translator.com.client.menubar'
 	xmlns:fv='urn:import:translator.com.client.favourite'
+	xmlns:dl='urn:import:translator.com.client.download'
 	xmlns:p1="urn:import:com.google.gwt.user.cellview.client">
 
 	<ui:style src="/resources/styles.css" />
@@ -13,6 +14,7 @@
 		<mb:MenuBar ui:field="menuBar"/>
 		<mnv:MainView ui:field="mainView"/>
 		<fv:Favourite ui:field="favourite" visible="false"/>
+		<dl:Download ui:field="download" visible="false"/>
 		
 		<div>
 			<div class="{style.bottomLogo}">

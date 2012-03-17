@@ -4,16 +4,6 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-
-	<!-- <filter>
-		<filter-name>Filter</filter-name>
-		<filter-class>translator.com.server.util.FilterServlet</filter-class>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>Filter</filter-name>
-		<url-pattern>/translator/translatorService</url-pattern>
-	</filter-mapping> -->
   
   <!-- Servlets -->
   <servlet>

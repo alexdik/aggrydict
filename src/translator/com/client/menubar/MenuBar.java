@@ -21,6 +21,7 @@ public class MenuBar extends Composite {
 	private static MenuBarUiBinder uiBinder = GWT.create(MenuBarUiBinder.class);
 	private final Anchor translator = new Anchor("Translator");
 	private final Anchor favourite = new Anchor("Favourite");
+	private final Anchor download = new Anchor("Download");
 	private final Anchor login = new Anchor("", GWT.getHostPageBaseURL() + DictConstants.FACEBOOK_AUTH_SERVLET);
 	private final Anchor logout = new Anchor("Logout", GWT.getHostPageBaseURL());
 	private final static String ITEM_SELECTED_STYLE = "menuItemSelected";
@@ -37,6 +38,8 @@ public class MenuBar extends Composite {
 				activateTranslator();
 			} else if (anchText.equals("Favourite")) {
 				activateFavourite();
+			} else if (anchText.equals("Download")) {
+				activateDownload();
 			}
 		}
 	};
@@ -51,8 +54,10 @@ public class MenuBar extends Composite {
 	protected void onLoad() {
 		translator.addClickHandler(clickHandler);
 		favourite.addClickHandler(clickHandler);
+		download.addClickHandler(clickHandler);
 		hPanel.add(translator);
 		hPanel.add(favourite);
+		hPanel.add(download);
 		
 		if (UserUtil.isAuthorized()) {
 			hPanel.add(logout);
@@ -68,6 +73,7 @@ public class MenuBar extends Composite {
 		translator.addStyleName(ITEM_SELECTED_STYLE);
 		translator.addStyleName("menuItem");
 		favourite.addStyleName("menuItem");
+		download.addStyleName("menuItem");
 		
 		super.onLoad();
 	}
@@ -84,6 +90,7 @@ public class MenuBar extends Composite {
 	public void activateTranslator() {
 		translator.addStyleName(ITEM_SELECTED_STYLE);
 		favourite.removeStyleName(ITEM_SELECTED_STYLE);
+		download.removeStyleName(ITEM_SELECTED_STYLE);
 		
 		menuSwitcher.activateMainView();
 	}
@@ -91,8 +98,16 @@ public class MenuBar extends Composite {
 	public void activateFavourite() {
 		favourite.addStyleName(ITEM_SELECTED_STYLE);
 		translator.removeStyleName(ITEM_SELECTED_STYLE);
+		download.removeStyleName(ITEM_SELECTED_STYLE);
 		
 		menuSwitcher.activateFavourite();
 	}
-
+	
+	public void activateDownload() {
+		download.addStyleName(ITEM_SELECTED_STYLE);
+		translator.removeStyleName(ITEM_SELECTED_STYLE);
+		favourite.removeStyleName(ITEM_SELECTED_STYLE);
+		
+		menuSwitcher.activateDownload();
+	}
 }

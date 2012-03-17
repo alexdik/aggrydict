@@ -1,6 +1,7 @@
 package translator.com.client;
 
 
+import translator.com.client.download.Download;
 import translator.com.client.favourite.Favourite;
 import translator.com.client.mainview.MainView;
 import translator.com.client.menubar.MenuBar;
@@ -20,40 +21,18 @@ public class Container extends Composite {
 	@UiField(provided=true) MenuBar menuBar;
 	@UiField(provided=true) Favourite favourite;
 	@UiField(provided=true) MainView mainView;
+	@UiField(provided=true) Download download;
 	@UiField Label userName;
-//	@UiField CellList<String> cellList;
-//	@UiField Label header;
 
 	interface ContainerUiBinder extends UiBinder<Widget, Container> {
 	}
-	
-	/*@UiFactory CellList<String> makeCellList() {
-		TextCell textCell = new TextCell();
-		final SingleSelectionModel<String> selectionModel = new SingleSelectionModel<String>();
-		
-		CellList<String> cellList = new CellList<String>(textCell){
-			public void render(Context context, String value, SafeHtmlBuilder sb) {
-			}
-		};
-		cellList.setSelectionModel(selectionModel);
-		
-		selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
-			public void onSelectionChange(SelectionChangeEvent event) {
-				String selected = selectionModel.getSelectedObject();
-				if (selected != null) {
-					header.setText(selected);
-				}
-			}
-	    });
-		
-	    return cellList;
-	}*/
 
 	public Container() {
 		mainView = new MainView();
 		favourite = new Favourite();
+		download = new Download();
 		
-		MenuSwitcher menuSwitcher = new MenuSwitcher(mainView, favourite);
+		MenuSwitcher menuSwitcher = new MenuSwitcher(mainView, favourite, download);
 		
 		menuBar = new MenuBar(menuSwitcher);
 		
@@ -75,8 +54,5 @@ public class Container extends Composite {
 			userName.setVisible(true);
 			userName.setText(userNameText);
 		}
-//		final List<String> DAYS = Arrays.asList("Translator", "Dictionary");
-//		cellList.setRowCount(DAYS.size(), true);
-//		cellList.setRowData(0, DAYS);
 	}
 }
